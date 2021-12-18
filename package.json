@@ -1,0 +1,13 @@
+{
+  "name": "team_profile_generator",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {},
+  "devDependencies": {
+    "jest": "^27.4.5"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "inquirer": "^8.2.0"
+  }
+}
