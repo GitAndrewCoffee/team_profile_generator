@@ -51,8 +51,8 @@ function getEmployee (empType) {
     }
 }
 
-getEmployee("Intern");
-// getEmployee("Engineer");
+// getEmployee("Intern");
+getEmployee("Engineer");
 // getEmployee("Manager");
 // getEmployee("BadData");
 
