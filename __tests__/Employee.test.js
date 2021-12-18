@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee.js');
 
 
-test('creates a Employee object', () => {
+test('creates an Employee object', () => {
 
     const testName = 'Elbrith Matomodo';
     const testID = "6785EM01";
