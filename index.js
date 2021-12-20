@@ -101,7 +101,7 @@ function getEmployee (empType) {
         inquirer.prompt (new Manager().prompts)
         .then (function (data) {
 
-            myEmployees.push(new Manager(data.eName, data.eID, data.eEmail, data.eSchool)) 
+            myEmployees.push(new Manager(data.eName, data.eID, data.eEmail, data.eOffice)) 
 
             getNextStep();
         })     
