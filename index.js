@@ -5,13 +5,31 @@
 //libraries
 const inquirer = require( "inquirer" );
 const fs = require( "fs" );
-const Engineer = require("./lib/Engineer.js");
-const Intern = require("./lib/Intern.js");
-const Manager = require("./lib/Manager.js");
+const Engineer = require( "./lib/Engineer.js" );
+const Intern = require( "./lib/Intern.js" );
+const Manager = require( "./lib/Manager.js" );
 
 //templates
-const fileTop = require("./src/top.txt");
-const fileBottom = require("./src/bottom.txt");
+const fileTop = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Team</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+</head>
+<body>
+    <header class="text-center p-4 bg-danger">
+        <h1 class="text-white">My Team</h1>
+    </header>
+    
+    <section class="cards">`;
+
+const fileBottom = '</section></body></html>';
 
 //lists
 var myEmployees = [];
@@ -98,17 +116,23 @@ function generateFile () {
     console.log('generateFile is running');
 
     //Add file start template
-    fs.writeFile("./dist/myteam.html", fileTop);
+    fs.writeFile("./dist/myteam.html", fileTop, (err) => {
+        if (err) throw err;        
+      });
 
     //Add Cards
     myEmployees.forEach(function(element){
         
-        fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.github));
+        fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.github), (err) => {
+            if (err) throw err;        
+          });
         
     });
 
     //Add file end template
-    fs.appendFile("./dist/myteam.html", fileBottom);
+    fs.appendFile("./dist/myteam.html", fileBottom, (err) => {
+        if (err) throw err;        
+      });
 }
 
 function buildCard(role, name, id, email, fourth) {
@@ -129,7 +153,7 @@ function buildCard(role, name, id, email, fourth) {
 
 }
 
-function fourthRow(role, fourth) {
+function buildFourth(role, fourth) {
     if (role == "Manager"){
 
         return `Office: ${fourth}`;
