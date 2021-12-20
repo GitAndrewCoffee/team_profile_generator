@@ -92,7 +92,7 @@ function getEmployee (empType) {
             .then (function (data) {
 
                 myEmployees.push(new Intern(data.eName, data.eID, data.eEmail, data.eSchool)) 
-
+                
                 getNextStep();
             })     
 
@@ -102,7 +102,7 @@ function getEmployee (empType) {
         .then (function (data) {
 
             myEmployees.push(new Manager(data.eName, data.eID, data.eEmail, data.eOffice)) 
-
+            
             getNextStep();
         })     
 
@@ -121,9 +121,27 @@ function generateFile () {
     //Add Cards
     myEmployees.forEach(function(element){
         
-        fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.github), (err) => {
-            if (err) throw err;        
-          });
+        if ( element.role == "Manager"){
+
+            fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.officeNumber), (err) => {
+                if (err) throw err;        
+              });
+
+        } else if ( element.role == "Engineer"){
+
+            fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.github), (err) => {
+                if (err) throw err;        
+              });
+
+        } else if ( element.role == "Intern"){
+
+            fs.appendFile("./dist/myteam.html", buildCard(element.role, element.name, element.id, element.email, element.school), (err) => {
+                if (err) throw err;        
+              });
+
+        }
+
+
         
     });
 
