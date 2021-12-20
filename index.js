@@ -57,7 +57,6 @@ function startHere () {
 }
 
 function getNextStep() {
-    console.log("getNextStep is running");
     inquirer.prompt(nextStepPrompt)
         .then (function (data) {
             console.log(`You chose to ${data.nextStep}`);
@@ -113,8 +112,7 @@ function getEmployee (empType) {
 }
 
 function generateFile () {
-    console.log('generateFile is running');
-
+    
     //Add file start template
     fs.writeFile("./dist/myteam.html", fileTop, (err) => {
         if (err) throw err;        
